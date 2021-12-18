@@ -1,0 +1,137 @@
+{
+    "name": "laravel/laravel",
+    "type": "project",
+    "description": "The Laravel Framework.",
+    "keywords": [
+        "framework",
+        "laravel"
+    ],
+    "license": "MIT",
+    "require": {
+        "php": "^7.2",
+        "ext-curl": "*",
+        "ext-gd": "*",
+        "ext-json": "*",
+        "ext-mbstring": "*",
+        "ext-openssl": "*",
+        "ext-pdo": "*",
+        "algolia/algoliasearch-client-php": "^2.7",
+        "ashallendesign/laravel-exchange-rates": "^3.3",
+        "backpack/crud": "^4.1",
+        "backpack/logmanager": "^4.0.0",
+        "backpack/newscrud": "^4.0.0",
+        "backpack/pagemanager": "^3.0",
+        "backpack/permissionmanager": "^6.0.4",
+        "backpack/settings": "^3.0.7",
+        "barryvdh/laravel-cors": "^2.0.0",
+        "barryvdh/laravel-elfinder": "^v0.4.6",
+        "beshelmek/laravel-roadrunner": "dev-master",
+        "cybercog/laravel-ban": "^4.4.0",
+        "d3lph1/minecraft-rcon-manager": "^1.3",
+        "doctrine/dbal": "^2.8",
+        "fideloper/proxy": "^4.0",
+        "funnyitselmo/minecraftserverstatus": "^1.0",
+        "fx3costa/laravelchartjs": "^2.5",
+        "genert/bbcode": "^1.1",
+        "geoip2/geoip2": "~2.1",
+        "google/recaptcha": "^1.2",
+        "hootlex/laravel-friendships": "^1.0",
+        "irazasyed/telegram-bot-sdk": "^v3.3.0",
+        "jzavorohina/censure": "^1.0",
+        "laravel-notification-channels/telegram": "^0.5.0",
+        "laravel/framework": "^8.0",
+        "laravel/scout": "^8.4",
+        "laravel/tinker": "^2.0",
+        "league/flysystem-aws-s3-v3": "^1.0",
+        "mews/captcha": "^3.0",
+        "mews/purifier": "^3.1",
+        "owen-it/laravel-auditing": "^v11.0.0",
+        "pragmarx/google2fa-laravel": "^1.4",
+        "predis/predis": "^1.1",
+        "sebdesign/artisan-cloudflare": "^2.0",
+        "sentry/sentry-laravel": "^2.1.1",
+        "socialiteproviders/discord": "^4.0",
+        "socialiteproviders/google": "^4.0",
+        "socialiteproviders/mailru": "^4.0",
+        "socialiteproviders/steam": "^4.0",
+        "socialiteproviders/telegram": "^4.0",
+        "socialiteproviders/vkontakte": "dev-master",
+        "socialiteproviders/yandex": "^4.0",
+        "spatie/laravel-permission": "^3.5",
+        "spiral/dumper": "^1.1",
+        "spiral/roadrunner": "^1.5",
+        "spiral/roadrunner-laravel": "^3.6",
+        "symfony/yaml": "^5.2",
+        "torann/geoip": "^3.0",
+        "tymon/jwt-auth": "1.0.*",
+        "updg/roadrunner-laravel": "^1.0",
+        "vearutop/php-obscene-censor-rus": "^1.0",
+        "vxm/laravel-async": "^2.0",
+        "webpatser/laravel-uuid": "^3.0",
+        "yab/laravel-scout-mysql-driver": "^3.0",
+        "yadahan/laravel-authentication-log": "^1.2"
+    },
+    "require-dev": {
+        "backpack/generators": "^v3.1.4",
+        "barryvdh/laravel-ide-helper": "^v2.8.1",
+        "beyondcode/laravel-dump-server": "^1.6.0",
+        "filp/whoops": "^2.0",
+        "fzaninotto/faker": "^1.4",
+        "laracasts/generators": "dev-master",
+        "mockery/mockery": "^1.0",
+        "nunomaduro/collision": "^5.0",
+        "orangehill/iseed": "^2.6",
+        "phpunit/phpunit": "^9.0"
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "dont-discover": [
+                "backpack/settings",
+                "tymon/jwt-auth"
+            ]
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        },
+        "classmap": [
+            "database/seeds",
+            "database/factories"
+        ],
+        "files": [
+            "app/Helpers/Color.php",
+            "app/Helpers/Date.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "repositories":  [
+        {
+            "type": "vcs",
+            "url": "https://github.com/Beshelmek/laravel-roadrunner.git"
+        }
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "scripts": {
+        "post-autoload-dump": [
+            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+            "@php artisan package:discover --ansi"
+        ],
+        "post-root-package-install": [
+            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+        ],
+        "post-create-project-cmd": [
+            "@php artisan key:generate --ansi"
+        ]
+    }
+}

@@ -1,0 +1,46 @@
+header{
+  position:relative;
+  padding:80px 0;
+
+  h1{
+    font-weight: bold;
+    font-size: 64px;
+    line-height: 1.2;
+    color: #222f44;
+  }
+  p{
+    margin:25px 0 0;
+    font-size: 28px;
+    color: #838994;
+  }
+  /*&::before{
+    content: '';
+    display: block;
+    position: absolute;
+    background: url(../img/banner1.svg) no-repeat left center;
+    background-size: contain;
+    top: 0;
+    left: 0;
+    width: 630px;
+    height: 100%;
+    z-index: 0;
+  }*/
+  .widget{
+    box-shadow: 0 10px 60px -25px #222f44, 0 0 20px 20px rgba(34, 47, 68, 0.05);
+  }
+  /*.side_banner{
+    position:relative;
+
+    &::before{
+      content:'';
+      background:url('../img/banner.svg') no-repeat center;
+      background-size: contain;
+      position: absolute;
+      left: -20px;
+      top: -530px;
+      width: 1153px;
+      height: 1358px;
+      z-index:-1;
+    }
+  }*/
+}

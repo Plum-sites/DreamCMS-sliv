@@ -1,0 +1,32 @@
+rpc:
+  enable: false
+  listen: tcp://127.0.0.1:6001
+
+http:
+  address: 0.0.0.0:8080
+
+  #maxRequestSize: 128
+
+  uploads:
+    forbid: [".php", ".exe", ".bat", ".jar"]
+
+  trustedSubnets: ["10.0.0.0/8", "127.0.0.0/8", "172.16.0.0/12", "192.168.0.0/16", "::1/128", "fc00::/7", "fe80::/10"]
+
+  workers:
+    #command: "php ./vendor/bin/rr-worker"
+    command: "php ./vendor/bin/roadrunner-worker"
+
+    # connection method (pipes, tcp://:9000, unix://socket.unix). default "pipes"
+    relay: "pipes"
+    #relay: "unix://rr.sock"
+
+    pool:
+      numWorkers: 12
+      maxJobs: 1000
+      allocateTimeout: 60
+      destroyTimeout:  60
+
+static:
+  enable: true
+  dir: "public"
+  forbid: [".php", ".env"]

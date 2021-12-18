@@ -1,0 +1,163 @@
+@import "~bootstrap/scss/bootstrap";
+@import "~vue-select/src/scss/vue-select";
+
+@import "~@fortawesome/fontawesome-pro/scss/fontawesome";
+@import "~@fortawesome/fontawesome-pro/scss/solid";
+@import "~@fortawesome/fontawesome-pro/scss/regular";
+@import "~@fortawesome/fontawesome-pro/scss/light";
+@import "~@fortawesome/fontawesome-pro/scss/duotone";
+@import "~@fortawesome/fontawesome-pro/scss/brands";
+
+// MINECRAFT
+@font-face {
+  font-family: 'minecraft';
+  font-style: normal;
+  font-weight: normal;
+  src: url('../font/MinecraftRegular.ttf') format('truetype');
+}
+
+// FS ELLIOT PRO
+@font-face {
+  font-family: 'FSElliotPro';
+  src: url('../font/FSElliotPro.eot');
+  src: url('../font/FSElliotPro.ttf') format('truetype'),
+  url('../font/FSElliotPro.svg#FSElliotPro') format('svg'),
+  url('../font/FSElliotPro.eot?#iefix') format('embedded-opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'FSElliotPro';
+  src: url('../font/FSElliotPro-Italic.eot');
+  src: url('../font/FSElliotPro-Italic.ttf') format('truetype'),
+  url('../font/FSElliotPro-Italic.svg#FSElliotPro-Italic') format('svg'),
+  url('../font/FSElliotPro-Italic.eot?#iefix') format('embedded-opentype');
+  font-style: italic;
+  font-weight: normal;
+}
+@font-face {
+  font-family: 'FSElliotPro';
+  src: url('../font/FSElliotPro-Bold.eot');
+  src: url('../font/FSElliotPro-Bold.ttf') format('truetype'),
+  url('../font/FSElliotPro-Bold.svg#FSElliotPro-Bold') format('svg'),
+  url('../font/FSElliotPro-Bold.eot?#iefix') format('embedded-opentype');
+  font-style: normal;
+  font-weight: bold;
+}
+@font-face {
+  font-family: 'FSElliotPro';
+  src: url('../font/FSElliotPro-BoldItalic.eot');
+  src: url('../font/FSElliotPro-BoldItalic.ttf') format('truetype'),
+  url('../font/FSElliotPro-BoldItalic.svg#FSElliotPro-BoldItalic') format('svg'),
+  url('../font/FSElliotPro-BoldItalic.eot?#iefix') format('embedded-opentype');
+  font-style: italic;
+  font-weight: bold;
+}
+@font-face {
+  font-family: 'FSElliotPro';
+  src: url('../font/FSElliotPro-Heavy.eot');
+  src: url('../font/FSElliotPro-Heavy.ttf') format('truetype'),
+  url('../font/FSElliotPro-Heavy.svg#FSElliotPro-Heavy') format('svg'),
+  url('../font/FSElliotPro-Heavy.eot?#iefix') format('embedded-opentype');
+  font-style: normal;
+  font-weight: 900;
+}
+
+// VARIABLES
+$light: #f6f9fc;
+$lightText: #919bba;
+$lightBorder: #e1e6ef;
+
+$blue: #9156e5;
+$blueLighten: lighten($blue, 5%);
+$blueDarken: darken(desaturate($blue, 25%),5%);
+
+$red: #fa6969;
+$redLighten: lighten($red, 5%);
+$redDarken: darken(desaturate($red, 25%),5%);
+
+$night: darken(desaturate($blue, 25%), 50%);
+$nightLighten: lighten($night, 5%);
+$nightDarken: darken($night, 5%);
+
+/* оранжевый  */ $orange: adjust-hue($blue, 150deg);
+/* зеленый    */ $green: #4fb363;
+/* желтый     */ $yellow: adjust-hue($blue, 170%);
+/* алмазный   */ $diamond: adjust-hue($blue,-35);
+/* розовый    */ $pink: adjust-hue($blue,70);
+/* красный    */ $red: adjust-hue($blue,120);
+/* фиолетовый */ $magenta: adjust-hue($blue,30);
+/* голубой    */ $aqua: #69faec;
+/* пурпурный  */ $purple: #e469fa;
+
+@mixin navDrop($width){
+  left: calc((100% - #{$width})/2);
+  width: $width;
+}
+@mixin FontAwesome(){
+  font-family: 'Font Awesome 5 Pro';
+}
+@mixin placeholder {
+  &::-webkit-input-placeholder { @content; }
+  &:-moz-placeholder           { @content; }
+  &::-moz-placeholder          { @content; }
+  &:-ms-input-placeholder      { @content; }
+}
+@mixin selectRestyle(){
+  -webkit-appearance: none!important;
+  -moz-appearance: none!important;
+  appearance: none!important;
+  outline: none!important;
+}
+
+.test_class_WL9K1E{
+  display:none;
+  @for $i from 1 through 36 {
+    .col-3:nth-child(#{$i}) .privilege{
+      background: linear-gradient(
+                      145deg,
+                      adjust-hue($blue, $i*10deg) 0,
+                      adjust-hue($blue, ($i*10)-40deg) 100%)!important;
+      min-height:300px;
+    }
+
+  }
+  .col-3:nth-child(4)~.col-3{
+    margin-top:15px;
+    padding-left:0;
+  }
+}
+
+/*
+@mixin animation($value) {
+  -webkit-animation: $value;
+  animation: $value;
+}
+@mixin transition($value) {
+  -webkit-transition: $value;
+  -o-transition: $value;
+  transition: $value;
+}
+@mixin transform-origin($value) {
+  -webkit-transform-origin: $value;
+  -ms-transform-origin: $value;
+  transform-origin: $value;
+}
+@mixin transform($value) {
+  -webkit-transform: $value;
+  -ms-transform: $value;
+  transform: $value;
+}
+@mixin box-shadow($value) {
+  -webkit-box-shadow: $value;
+  box-shadow: $value;
+}
+@mixin box-sizing($value) {
+  -webkit-box-sizing: $value;
+  box-sizing: $value;
+}
+@mixin filter($value) {
+  -webkit-filter: $value;
+  filter: $value;
+}
+*/

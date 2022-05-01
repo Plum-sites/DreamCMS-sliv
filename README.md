@@ -7,6 +7,8 @@ DreamCMS<br>
 **Не проверен на работоспособность!**
 </h3>
 
+Ссылка на инструкцию от автора: https://dreamcms.beshelmek.org/books/dreamcms/page/ustanovka
+
 ____
 
 О сливе:
@@ -20,41 +22,66 @@ ____
 ____
 
 Обязательные требования:
- - redis_server
- - MariaDB 10.3 и выше
- - Node 12
- - php 7.4 и выше
- - - BCMath PHP Extension
- - - Ctype PHP Extension
- - - Fileinfo PHP extension
- - - JSON PHP Extension
- - - Mbstring PHP Extension
- - - OpenSSL PHP Extension
- - - PDO PHP Extension
- - - Tokenizer PHP Extension
- - - XML PHP Extension
- - - GD PHP Extension
- - - Curl PHP Extension
- - Apache и/или Nginx
+ - Nginx - вебсервер
+ - PHP v7.4+ и PHP-FPM
+ - NodeJS v12.x и NPM
+ - Composer v2+ - менеджер пакетов PHP
+ - MariaDB (v13+) - MySQL сервер базы данных
+ - Redis - кеш-сервер
+ - ZIP / UNZIP (установка: apt install -y zip unzip)
 
-Команды для установки большей части требований:
+Заивисимости PHP:
+ - BCMath
+ - Ctype
+ - Fileinfo
+ - JSON
+ - Mbstring
+ - PDO
+ - Tokenizer
+ - XML
+ - GD
+ - CURL
+
+Сначала, обновите пакеты:
 ```
-apt-get install nginx php7.4-fpm
-
-apt-get install php7.4-curl php7.4-bcmath php7.4-mbstring php7.4-pdo php7.4-tokenizer php7.4-xml php7.4-mysql php7.4-gd
+apt update
+apt upgrade
 ```
 
-Если не встаёт из за дебиан, прописать это а потом то что выше:
+Установите необходимые компоненты для установки:
 ```
-apt-get update && apt-get upgrade
+apt -y install lsb-release apt-transport-https ca-certificates sudo software-properties-common dirmngr curl
+```
 
-apt -y install lsb-release apt-transport-https ca-certificates
-
+Установка PHP, PHP-FPM и необходимых пакетов:
+```
 wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg
-
 echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" | sudo tee /etc/apt/sources.list.d/php.list
+apt update
+apt -y install php7.4
+apt -y install php7.4-{bcmath,ctype,fileinfo,json,mbstring,mysql,pdo,zip,tokenizer,gd,curl,dom}
 ```
-Node 12 уже есть в композере...
+
+Устанавливаем NGINX и LetsEncrypt:
+```
+apt -y install nginx certbot python3-certbot-nginx
+```
+
+Устанавливаем MariaDB и Redis:
+```
+apt-key adv --fetch-keys 'https://mariadb.org/mariadb_release_signing_key.asc'
+add-apt-repository 'deb [arch=amd64] http://mirrors.ukfast.co.uk/sites/mariadb/repo/10.5/debian buster main'
+apt update
+apt -y install mariadb-server
+mysql_secure_installation
+apt -y install redis-server
+```
+
+Установка NodeJS и NPM:
+```
+curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
+apt -y install nodejs
+```
 
 Дополнительно:
  - .env.example - Это ваш конфиг (уберите .example или создайте новый файл '.env')
